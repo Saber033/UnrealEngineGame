@@ -1,0 +1,27 @@
+# UE4 Git Ignore
+Saved/
+Intermediate/
+DerivedDataCache/
+.vscode/
+*.VC.db
+*.sdf
+*.opensdf
+*.suo
+*.user
+*.userprefs
+*.log
+*.pdb
+*.exe
+*.dll
+*.app
+*.dylib
+*.icns
+*.so
+*.target
+Binaries/
+Build/*.xcodeproj/
+Build/**/*.make
+Build/**/*.mk
+Build/**/*.cmake
+*.xcodeproj
+.vs/
