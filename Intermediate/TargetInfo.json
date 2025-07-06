@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "CoolNinja",
+			"Path": "C:\\Users\\lemur\\UnrealEngineGame\\Source\\CoolNinja.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "CoolNinjaEditor",
+			"Path": "C:\\Users\\lemur\\UnrealEngineGame\\Source\\CoolNinjaEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

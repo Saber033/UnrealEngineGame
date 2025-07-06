@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\CoolNinja.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{7FD6552A-5554-40F8-8668-46745FEC592B}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\CoolNinja.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\CoolNinjaEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\.gitattributes" />
+    <None Include="..\..\.gitignore" />
+    <Filter Include="Config">
+      <UniqueIdentifier>{8625A76A-E83B-4F39-9209-B8375389A955}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\CoolNinja">
+      <UniqueIdentifier>{386B352D-1BE3-47AA-AC87-09F645D979ED}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\CoolNinja\CoolNinja.Build.cs">
+      <Filter>Source\CoolNinja</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\CoolNinja\CoolNinja.cpp">
+      <Filter>Source\CoolNinja</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\CoolNinja\CoolNinja.h">
+      <Filter>Source\CoolNinja</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\CoolNinja\CoolNinjaCharacter.cpp">
+      <Filter>Source\CoolNinja</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\CoolNinja\CoolNinjaCharacter.h">
+      <Filter>Source\CoolNinja</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\CoolNinja\CoolNinjaGameMode.cpp">
+      <Filter>Source\CoolNinja</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\CoolNinja\CoolNinjaGameMode.h">
+      <Filter>Source\CoolNinja</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
