@@ -86,7 +86,7 @@ void ACoolNinjaCharacter::UpdateAnimation()
 
 	// Are we moving or standing still?
 	UPaperFlipbook* DesiredAnimation = (PlayerSpeedSqr > 0.0f) ? RunningAnimation : IdleAnimation;
-	if( GetSprite()->GetFlipbook() != DesiredAnimation 	)
+	if( GetSprite()->GetFlipbook() != DesiredAnimation && GetSprite()->GetFlipbook() != JumpAnimation	)
 	{
 		GetSprite()->SetFlipbook(DesiredAnimation);
 	}
@@ -132,6 +132,26 @@ void ACoolNinjaCharacter::TouchStopped(const ETouchIndex::Type FingerIndex, cons
 {
 	// Cease jumping once touch stopped
 	StopJumping();
+}
+
+void ACoolNinjaCharacter::OnJumped_Implementation()
+{
+	Super::OnJumped_Implementation();
+	UE_LOG(LogTemp, Log, TEXT("jumped!"));
+	// play jump animation
+	if (JumpAnimation)
+	{
+		GetSprite()->SetPlayRate(1.2f);
+		GetSprite()->SetFlipbook(JumpAnimation);
+		GetSprite()->SetPlayRate(1.0f);
+	}
+}
+
+void ACoolNinjaCharacter::Landed(const FHitResult& Hit)
+{
+	Super::Landed(Hit);
+	UE_LOG(LogTemp, Log, TEXT("landed!"));
+	GetSprite()->SetFlipbook(RunningAnimation);
 }
 
 void ACoolNinjaCharacter::UpdateCharacter()

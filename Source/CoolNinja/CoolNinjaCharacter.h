@@ -58,6 +58,12 @@ protected:
 	/** Handle touch stop event. */
 	void TouchStopped(const ETouchIndex::Type FingerIndex, const FVector Location);
 
+	// runs when the player jumps
+	virtual void OnJumped_Implementation() override;
+
+	// runs when the player lands
+	virtual void Landed(const FHitResult& Hit) override;
+
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 	// End of APawn interface
