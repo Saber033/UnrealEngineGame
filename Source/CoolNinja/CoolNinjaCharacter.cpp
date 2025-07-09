@@ -76,6 +76,8 @@ ACoolNinjaCharacter::ACoolNinjaCharacter()
 	bReplicates = true;
 }
 
+
+
 //////////////////////////////////////////////////////////////////////////
 // Animation
 
@@ -86,7 +88,8 @@ void ACoolNinjaCharacter::UpdateAnimation()
 
 	// Are we moving or standing still?
 	UPaperFlipbook* DesiredAnimation = (PlayerSpeedSqr > 0.0f) ? RunningAnimation : IdleAnimation;
-	if( GetSprite()->GetFlipbook() != DesiredAnimation && GetSprite()->GetFlipbook() != JumpAnimation	)
+	UPaperFlipbook* CurrentAnimation = GetSprite()->GetFlipbook();
+	if( CurrentAnimation != DesiredAnimation && (CurrentAnimation == IdleAnimation || CurrentAnimation == RunningAnimation)	)
 	{
 		GetSprite()->SetFlipbook(DesiredAnimation);
 	}
@@ -109,6 +112,9 @@ void ACoolNinjaCharacter::SetupPlayerInputComponent(class UInputComponent* Playe
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ACoolNinjaCharacter::MoveRight);
+	
+	// added
+	PlayerInputComponent->BindAction("Dash", IE_Pressed, this, &ACoolNinjaCharacter::Dash);
 
 	PlayerInputComponent->BindTouch(IE_Pressed, this, &ACoolNinjaCharacter::TouchStarted);
 	PlayerInputComponent->BindTouch(IE_Released, this, &ACoolNinjaCharacter::TouchStopped);
@@ -116,8 +122,6 @@ void ACoolNinjaCharacter::SetupPlayerInputComponent(class UInputComponent* Playe
 
 void ACoolNinjaCharacter::MoveRight(float Value)
 {
-	/*UpdateChar();*/
-
 	// Apply the input to the character motion
 	AddMovementInput(FVector(1.0f, 0.0f, 0.0f), Value);
 }
@@ -132,6 +136,18 @@ void ACoolNinjaCharacter::TouchStopped(const ETouchIndex::Type FingerIndex, cons
 {
 	// Cease jumping once touch stopped
 	StopJumping();
+}
+
+void ACoolNinjaCharacter::Dash()
+{
+	GetSprite()->SetFlipbook(DashAnimation);
+	// pause player inputs
+	// pause player velocity
+	
+	// set it to somethig based on the dash
+	// set velocity to 0
+	// unpause player inputs
+	GetSprite()->SetFlipbook(IdleAnimation);
 }
 
 void ACoolNinjaCharacter::OnJumped_Implementation()

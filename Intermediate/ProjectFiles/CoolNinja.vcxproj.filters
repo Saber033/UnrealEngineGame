@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\CoolNinja.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{1AD6E70F-8FA7-4CC1-B316-6A9650ABF4BC}</UniqueIdentifier>
+      <UniqueIdentifier>{1D8BCD64-AD6C-416E-9EF6-79C6DBD15A6A}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\CoolNinja.Target.cs">
       <Filter>Source</Filter>
@@ -16,7 +16,7 @@
     <None Include="..\..\.gitignore" />
     <None Include="..\..\shadertoolsconfig.json" />
     <Filter Include="Config">
-      <UniqueIdentifier>{8BC09E86-01E8-4D9F-A346-F56BA11E4BB2}</UniqueIdentifier>
+      <UniqueIdentifier>{D81BED98-5D6B-4100-9872-BFCD0800E17C}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -34,7 +34,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\CoolNinja">
-      <UniqueIdentifier>{72B0D246-962E-4722-AA41-224830A5B881}</UniqueIdentifier>
+      <UniqueIdentifier>{369E3C0B-F3C4-40CB-A502-91A45CF46020}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\CoolNinja\CoolNinja.Build.cs">
       <Filter>Source\CoolNinja</Filter>
