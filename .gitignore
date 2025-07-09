@@ -1,6 +1,8 @@
 # UE4 Git Ignore
 Saved/
-Intermediate/
+Intermediate/Build/
+Intermediate/ReimportCache/
+Intermediate/CachedAssetRegistry.bin
 DerivedDataCache/
 .vscode/
 *.VC.db
