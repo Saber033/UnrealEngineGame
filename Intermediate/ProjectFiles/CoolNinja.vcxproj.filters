@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\CoolNinja.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{1D8BCD64-AD6C-416E-9EF6-79C6DBD15A6A}</UniqueIdentifier>
+      <UniqueIdentifier>{152051CC-63CA-48D1-89B4-EB42A32548D5}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\CoolNinja.Target.cs">
       <Filter>Source</Filter>
@@ -15,8 +15,9 @@
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
     <None Include="..\..\shadertoolsconfig.json" />
+    <None Include="..\..\Temp.txt" />
     <Filter Include="Config">
-      <UniqueIdentifier>{D81BED98-5D6B-4100-9872-BFCD0800E17C}</UniqueIdentifier>
+      <UniqueIdentifier>{7E4EF287-3949-4C5F-97D8-53D6340B5F18}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -34,7 +35,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\CoolNinja">
-      <UniqueIdentifier>{369E3C0B-F3C4-40CB-A502-91A45CF46020}</UniqueIdentifier>
+      <UniqueIdentifier>{2B75938D-C432-4002-B157-15AE89AEAC14}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\CoolNinja\CoolNinja.Build.cs">
       <Filter>Source\CoolNinja</Filter>
@@ -55,6 +56,12 @@
       <Filter>Source\CoolNinja</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\CoolNinja\CoolNinjaGameMode.h">
+      <Filter>Source\CoolNinja</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\CoolNinja\MyPawn.cpp">
+      <Filter>Source\CoolNinja</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\CoolNinja\MyPawn.h">
       <Filter>Source\CoolNinja</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\CoolNinja\NewActorComponent.cpp">

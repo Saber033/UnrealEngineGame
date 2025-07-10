@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "GameFramework/FloatingPawnMovement.h"
 #include "Wolf.generated.h"
 
 UCLASS()
@@ -15,15 +16,20 @@ public:
 	// Sets default values for this pawn's properties
 	AWolf();
 
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+	// Called to bind functionality to input
+	/*virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;*/
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UFloatingPawnMovement* MovementComponent;
 
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
+	UPROPERTY(EditAnywhere)
+	AActor* target;
 };
