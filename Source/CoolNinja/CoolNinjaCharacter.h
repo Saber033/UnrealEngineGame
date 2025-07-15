@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "PaperCharacter.h"
+#include "Projectile.h"
 #include "CoolNinjaCharacter.generated.h"
 
 class UTextRenderComponent;
@@ -62,13 +63,16 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
 	class UPaperFlipbook* ThrowAnimation;
 
+	UPROPERTY()
+	TSubclassOf<AProjectile> Shuriken;
+
 	/** Called to choose the correct animation to play based on the character's movement state */
 	void UpdateAnimation();
 
 	/** Called for side to side input */
 	void MoveRight(float Value);
 
-	void UpdateCharacter();
+	void UpdateCharacter(float DeltaSeconds);
 
 	/** Handle touch inputs. */
 	void TouchStarted(const ETouchIndex::Type FingerIndex, const FVector Location);
@@ -76,7 +80,12 @@ protected:
 	/** Handle touch stop event. */
 	void TouchStopped(const ETouchIndex::Type FingerIndex, const FVector Location);
 
+
 	void Dash();
+
+	void Attack();
+
+	void Throw();
 
 	// runs when the player jumps
 	virtual void OnJumped_Implementation() override;
@@ -89,7 +98,9 @@ protected:
 	// End of APawn interface
 
 	float DashSpeed;
+	float DashTimer;
 
+	bool bDashing;
 
 public:
 	ACoolNinjaCharacter();

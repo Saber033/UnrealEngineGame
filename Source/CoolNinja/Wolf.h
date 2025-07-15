@@ -5,6 +5,9 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "GameFramework/FloatingPawnMovement.h"
+#include "Components/CapsuleComponent.h"
+#include "PaperSpriteComponent.h"
+#include "PaperSprite.h"
 #include "Wolf.generated.h"
 
 UCLASS()
@@ -29,6 +32,12 @@ protected:
 public:	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UFloatingPawnMovement* MovementComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
+	UCapsuleComponent* CollisionComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Visual")
+	UPaperSpriteComponent* SpriteComponent;
 
 	UPROPERTY(EditAnywhere)
 	AActor* target;

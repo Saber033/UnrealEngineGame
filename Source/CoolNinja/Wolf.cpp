@@ -20,6 +20,23 @@ AWolf::AWolf()
 	//AIControllerClass = AAIController::StaticClass();
 	AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
 
+	// Capsule component for collision
+	CollisionComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("CapsuleComponent"));
+	CollisionComponent->InitCapsuleSize(42.0f, 96.0f);
+
+	RootComponent = CollisionComponent;
+
+	// Sprite component
+	SpriteComponent = CreateDefaultSubobject<UPaperSpriteComponent>(TEXT("SpriteComponent"));
+	SpriteComponent->SetupAttachment(CollisionComponent);
+
+	static ConstructorHelpers::FObjectFinder<UPaperSprite> SpriteAsset(TEXT("/Game/2DSideScroller/KnightAssets/KnightIdle_Sprite_1.KnightIdle_Sprite_1"));
+	if (SpriteAsset.Succeeded())
+	{
+		SpriteComponent->SetSprite(SpriteAsset.Object);
+	}
+
+	//intializing other data members
 	dead = false;
 }
 
