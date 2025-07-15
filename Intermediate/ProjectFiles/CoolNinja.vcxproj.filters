@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\CoolNinja.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{152051CC-63CA-48D1-89B4-EB42A32548D5}</UniqueIdentifier>
+      <UniqueIdentifier>{42EB875B-9174-4D05-B89F-9EC454AA4318}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\CoolNinja.Target.cs">
       <Filter>Source</Filter>
@@ -17,7 +17,7 @@
     <None Include="..\..\shadertoolsconfig.json" />
     <None Include="..\..\Temp.txt" />
     <Filter Include="Config">
-      <UniqueIdentifier>{7E4EF287-3949-4C5F-97D8-53D6340B5F18}</UniqueIdentifier>
+      <UniqueIdentifier>{A727C93A-0ACE-4C53-AC48-9E860751696A}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -35,7 +35,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\CoolNinja">
-      <UniqueIdentifier>{2B75938D-C432-4002-B157-15AE89AEAC14}</UniqueIdentifier>
+      <UniqueIdentifier>{CC32E54E-1F85-4D5D-9DA8-D9843532A369}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\CoolNinja\CoolNinja.Build.cs">
       <Filter>Source\CoolNinja</Filter>
@@ -58,16 +58,16 @@
     <ClInclude Include="..\..\Source\CoolNinja\CoolNinjaGameMode.h">
       <Filter>Source\CoolNinja</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Source\CoolNinja\MyPawn.cpp">
-      <Filter>Source\CoolNinja</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\CoolNinja\MyPawn.h">
-      <Filter>Source\CoolNinja</Filter>
-    </ClInclude>
     <ClCompile Include="..\..\Source\CoolNinja\NewActorComponent.cpp">
       <Filter>Source\CoolNinja</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\CoolNinja\NewActorComponent.h">
+      <Filter>Source\CoolNinja</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\CoolNinja\Projectile.cpp">
+      <Filter>Source\CoolNinja</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\CoolNinja\Projectile.h">
       <Filter>Source\CoolNinja</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\CoolNinja\skibidirizz.cpp">

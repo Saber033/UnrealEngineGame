@@ -83,12 +83,13 @@ void ACoolNinjaCharacter::BeginPlay()
 	GetCharacterMovement()->GravityScale = 3.5f;
 	GetCharacterMovement()->AirControl = 1.0f;
 	GetCharacterMovement()->JumpZVelocity = 1800.0f;
-	GetCharacterMovement()->GroundFriction = 8.0f;
-	GetCharacterMovement()->MaxWalkSpeed = 1200.0f;
+	GetCharacterMovement()->GroundFriction = 0.0f;
+	GetCharacterMovement()->MaxWalkSpeed = 3000.0f;
 	GetCharacterMovement()->MaxAcceleration = 10000.0f;
 	GetCharacterMovement()->BrakingDecelerationWalking = 8000.0f;
 	GetCharacterMovement()->BrakingFrictionFactor = 1.0f;
 	DashSpeed = 3000.0f;
+	DashTimer = 0.0f;
 }
 
 
@@ -114,7 +115,7 @@ void ACoolNinjaCharacter::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 	
-	UpdateCharacter();	
+	UpdateCharacter(DeltaSeconds);	
 }
 
 
@@ -130,6 +131,9 @@ void ACoolNinjaCharacter::SetupPlayerInputComponent(class UInputComponent* Playe
 	
 	// added
 	PlayerInputComponent->BindAction("Dash", IE_Pressed, this, &ACoolNinjaCharacter::Dash);
+	PlayerInputComponent->BindAction("Attack", IE_Pressed, this, &ACoolNinjaCharacter::Attack);
+	PlayerInputComponent->BindAction("Throw", IE_Pressed, this, &ACoolNinjaCharacter::Throw);
+
 
 	PlayerInputComponent->BindTouch(IE_Pressed, this, &ACoolNinjaCharacter::TouchStarted);
 	PlayerInputComponent->BindTouch(IE_Released, this, &ACoolNinjaCharacter::TouchStopped);
@@ -163,11 +167,27 @@ void ACoolNinjaCharacter::Dash()
 
 	bool bFacingRight = GetControlRotation().Yaw == 0.0f;
 	GetCharacterMovement()->Velocity.X = bFacingRight ? DashSpeed : -1 * DashSpeed;
-
+	GetCharacterMovement()->GravityScale = 0.0f;
+	DashTimer = 0.25f;
+	bDashing = true;
 	// set it to somethig based on the dash
 	// set velocity to 0
 	// unpause player inputs?
-	GetSprite()->SetFlipbook(IdleAnimation);
+}
+
+void ACoolNinjaCharacter::Attack()
+{
+	GetSprite()->SetFlipbook(AttackAnimation);
+}
+
+void ACoolNinjaCharacter::Throw()
+{
+	GetSprite()->SetFlipbook(ThrowAnimation);
+	AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(Shuriken, GetActorLocation(), GetActorRotation());
+	if (Projectile)
+	{
+		Projectile->Initialize(GetActorForwardVector());
+	}
 }
 
 void ACoolNinjaCharacter::OnJumped_Implementation()
@@ -190,10 +210,21 @@ void ACoolNinjaCharacter::Landed(const FHitResult& Hit)
 	GetSprite()->SetFlipbook(RunningAnimation);
 }
 
-void ACoolNinjaCharacter::UpdateCharacter()
+void ACoolNinjaCharacter::UpdateCharacter(float DeltaSeconds)
 {
 	// Update animation to match the motion
 	UpdateAnimation();
+
+	if (DashTimer > 0.0f)
+	{
+		DashTimer -= DeltaSeconds;
+	}
+	else if (bDashing)
+	{
+		GetCharacterMovement()->GravityScale = 3.5f;
+		GetSprite()->SetFlipbook(IdleAnimation);
+		bDashing = false;
+	}
 
 	// Now setup the rotation of the controller based on the direction we are travelling
 	const FVector PlayerVelocity = GetVelocity();	
