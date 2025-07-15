@@ -3,7 +3,11 @@
   <ItemGroup>
     <None Include="..\..\CoolNinja.uproject" />
     <Filter Include="Source">
+<<<<<<< HEAD
       <UniqueIdentifier>{D2D21307-B14C-44F0-9D71-54D15954AFEE}</UniqueIdentifier>
+=======
+      <UniqueIdentifier>{42EB875B-9174-4D05-B89F-9EC454AA4318}</UniqueIdentifier>
+>>>>>>> 8070d7eb128c7a4b20ee631e19e6345f47130d52
     </Filter>
     <None Include="..\..\Source\CoolNinja.Target.cs">
       <Filter>Source</Filter>
@@ -17,7 +21,11 @@
     <None Include="..\..\shadertoolsconfig.json" />
     <None Include="..\..\Temp.txt" />
     <Filter Include="Config">
+<<<<<<< HEAD
       <UniqueIdentifier>{4B87C891-FB3A-47B4-9225-CC3C09FF5880}</UniqueIdentifier>
+=======
+      <UniqueIdentifier>{A727C93A-0ACE-4C53-AC48-9E860751696A}</UniqueIdentifier>
+>>>>>>> 8070d7eb128c7a4b20ee631e19e6345f47130d52
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -35,7 +43,11 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\CoolNinja">
+<<<<<<< HEAD
       <UniqueIdentifier>{6D4C15F5-F256-476E-BD93-6C0D944C4715}</UniqueIdentifier>
+=======
+      <UniqueIdentifier>{CC32E54E-1F85-4D5D-9DA8-D9843532A369}</UniqueIdentifier>
+>>>>>>> 8070d7eb128c7a4b20ee631e19e6345f47130d52
     </Filter>
     <ClCompile Include="..\..\Source\CoolNinja\BouncePad.cpp">
       <Filter>Source\CoolNinja</Filter>
@@ -68,6 +80,12 @@
       <Filter>Source\CoolNinja</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\CoolNinja\NewActorComponent.h">
+      <Filter>Source\CoolNinja</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\CoolNinja\Projectile.cpp">
+      <Filter>Source\CoolNinja</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\CoolNinja\Projectile.h">
       <Filter>Source\CoolNinja</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\CoolNinja\skibidirizz.cpp">

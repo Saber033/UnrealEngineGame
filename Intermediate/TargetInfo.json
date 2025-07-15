@@ -2,12 +2,20 @@
 	"Targets": [
 		{
 			"Name": "CoolNinja",
+<<<<<<< HEAD
 			"Path": "C:\\Users\\Itsme\\UnrealEngineGame\\Source\\CoolNinja.Target.cs",
+=======
+			"Path": "C:\\Users\\hanah\\UnrealEngineGame\\Source\\CoolNinja.Target.cs",
+>>>>>>> 8070d7eb128c7a4b20ee631e19e6345f47130d52
 			"Type": "Game"
 		},
 		{
 			"Name": "CoolNinjaEditor",
+<<<<<<< HEAD
 			"Path": "C:\\Users\\Itsme\\UnrealEngineGame\\Source\\CoolNinjaEditor.Target.cs",
+=======
+			"Path": "C:\\Users\\hanah\\UnrealEngineGame\\Source\\CoolNinjaEditor.Target.cs",
+>>>>>>> 8070d7eb128c7a4b20ee631e19e6345f47130d52
 			"Type": "Editor"
 		}
 	]
