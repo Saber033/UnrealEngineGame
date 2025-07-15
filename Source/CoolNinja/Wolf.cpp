@@ -36,13 +36,18 @@ void AWolf::Tick(float DeltaTime)
 	if (target != nullptr)
 	{
 		// Distance from player
-		FVector distance = target->GetActorLocation() - GetActorLocation();
+		FVector distance;
+		distance.X = std::abs(target->GetActorLocation().X - GetActorLocation().X);
+		distance.Z = std::abs(target->GetActorLocation().Z - GetActorLocation().Z);
 
-		while (distance.X <= 100.0f && distance.Z <= 25.0f)
+		int temp = 0;
+
+		while (distance.X <= 1300.0f && distance.Z <= 500.0f && temp < 1000)
 		{
 			// Gets direction to player and then moves towards it
-			FVector direction = (distance).GetSafeNormal();
+			FVector direction = (target->GetActorLocation() - GetActorLocation()).GetSafeNormal();
 			AddMovementInput(direction, 1.0f);
+			temp++;
 		}
 	}
 }
