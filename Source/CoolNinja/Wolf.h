@@ -32,4 +32,6 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	AActor* target;
+
+	bool dead;
 };

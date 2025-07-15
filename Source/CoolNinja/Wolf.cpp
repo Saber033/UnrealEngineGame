@@ -19,6 +19,8 @@ AWolf::AWolf()
 	// Lets it use AddMovementInput 
 	//AIControllerClass = AAIController::StaticClass();
 	AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
+
+	dead = false;
 }
 
 // Called when the game starts or when spawned
@@ -33,7 +35,7 @@ void AWolf::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (target != nullptr)
+	if (target != nullptr && !dead)
 	{
 		// Distance from player
 		FVector distance;
