@@ -50,8 +50,8 @@ ACoolNinjaCharacter::ACoolNinjaCharacter()
 
 	// Configure character movement
 	GetCharacterMovement()->GravityScale = 2.0f;
-	GetCharacterMovement()->AirControl = 0.80f;
-	GetCharacterMovement()->JumpZVelocity = 1000.f;
+	GetCharacterMovement()->AirControl = 0.8f;
+	GetCharacterMovement()->JumpZVelocity = 1000.0f;
 	GetCharacterMovement()->GroundFriction = 3.0f;
 	GetCharacterMovement()->MaxWalkSpeed = 600.0f;
 	GetCharacterMovement()->MaxFlySpeed = 600.0f;
@@ -74,6 +74,21 @@ ACoolNinjaCharacter::ACoolNinjaCharacter()
 	// Enable replication on the Sprite component so animations show up when networked
 	GetSprite()->SetIsReplicated(true);
 	bReplicates = true;
+}
+
+void ACoolNinjaCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+
+	GetCharacterMovement()->GravityScale = 3.5f;
+	GetCharacterMovement()->AirControl = 1.0f;
+	GetCharacterMovement()->JumpZVelocity = 1800.0f;
+	GetCharacterMovement()->GroundFriction = 8.0f;
+	GetCharacterMovement()->MaxWalkSpeed = 1200.0f;
+	GetCharacterMovement()->MaxAcceleration = 10000.0f;
+	GetCharacterMovement()->BrakingDecelerationWalking = 8000.0f;
+	GetCharacterMovement()->BrakingFrictionFactor = 1.0f;
+	DashSpeed = 3000.0f;
 }
 
 
@@ -141,12 +156,17 @@ void ACoolNinjaCharacter::TouchStopped(const ETouchIndex::Type FingerIndex, cons
 void ACoolNinjaCharacter::Dash()
 {
 	GetSprite()->SetFlipbook(DashAnimation);
-	// pause player inputs
+	// pause player inputs?
 	// pause player velocity
-	
+	GetCharacterMovement()->Velocity = FVector::ZeroVector;
+	GetCharacterMovement()->StopMovementImmediately();
+
+	bool bFacingRight = GetControlRotation().Yaw == 0.0f;
+	GetCharacterMovement()->Velocity.X = bFacingRight ? DashSpeed : -1 * DashSpeed;
+
 	// set it to somethig based on the dash
 	// set velocity to 0
-	// unpause player inputs
+	// unpause player inputs?
 	GetSprite()->SetFlipbook(IdleAnimation);
 }
 

@@ -35,9 +35,15 @@ void AWolf::Tick(float DeltaTime)
 
 	if (target != nullptr)
 	{
-		// Gets direction to player and then moves towards it
-		FVector direction = (target->GetActorLocation() - GetActorLocation()).GetSafeNormal();
-		AddMovementInput(direction, 1.0f);
+		// Distance from player
+		FVector distance = target->GetActorLocation() - GetActorLocation();
+
+		while (distance.X <= 100.0f && distance.Z <= 25.0f)
+		{
+			// Gets direction to player and then moves towards it
+			FVector direction = (distance).GetSafeNormal();
+			AddMovementInput(direction, 1.0f);
+		}
 	}
 }
 
