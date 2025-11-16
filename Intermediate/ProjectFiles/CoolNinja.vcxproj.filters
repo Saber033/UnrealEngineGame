@@ -83,4 +83,14 @@
       <Filter>Source\CoolNinja</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\CoolNinja\Projectile.cpp">
+      <Filter>Source\CoolNinja</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\CoolNinja\Projectile.h">
+      <Filter>Source\CoolNinja</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
