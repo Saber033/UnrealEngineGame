@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Pawn.h"
+#include "GameFramework/Character.h"
 #include "GameFramework/FloatingPawnMovement.h"
 #include "Components/CapsuleComponent.h"
 #include "PaperSpriteComponent.h"
@@ -11,7 +11,7 @@
 #include "Wolf.generated.h"
 
 UCLASS()
-class COOLNINJA_API AWolf : public APawn
+class COOLNINJA_API AWolf : public ACharacter
 {
 	GENERATED_BODY()
 
@@ -31,7 +31,6 @@ protected:
 
 public:	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	UFloatingPawnMovement* MovementComponent;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
 	UCapsuleComponent* CollisionComponent;
