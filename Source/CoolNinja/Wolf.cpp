@@ -11,8 +11,6 @@ AWolf::AWolf()
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
-
 	MovementComponent = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("MovementComponent"));
 	MovementComponent->MaxSpeed = 600.0f;
 
@@ -23,8 +21,12 @@ AWolf::AWolf()
 	// Capsule component for collision
 	CollisionComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("CapsuleComponent"));
 	CollisionComponent->InitCapsuleSize(42.0f, 96.0f);
+	CollisionComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	CollisionComponent->SetCollisionObjectType(ECC_Pawn);
+	CollisionComponent->SetCollisionResponseToAllChannels(ECR_Block);
 
 	RootComponent = CollisionComponent;
+	MovementComponent->UpdatedComponent = CollisionComponent;
 
 	// Sprite component
 	SpriteComponent = CreateDefaultSubobject<UPaperSpriteComponent>(TEXT("SpriteComponent"));
