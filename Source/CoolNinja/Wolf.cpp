@@ -25,6 +25,7 @@ AWolf::AWolf()
 	CollisionComponent->SetCollisionResponseToAllChannels(ECR_Block);
 
 	RootComponent = CollisionComponent;
+	MovementComponent->UpdatedComponent = CollisionComponent;
 
 	// Sprite component
 	SpriteComponent = CreateDefaultSubobject<UPaperSpriteComponent>(TEXT("SpriteComponent"));
