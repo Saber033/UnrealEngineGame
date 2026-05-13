@@ -10,27 +10,21 @@ AWolf::AWolf()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
-	MovementComponent = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("MovementComponent"));
-	MovementComponent->MaxSpeed = 600.0f;
+	
+	GetCapsuleComponent()->InitCapsuleSize(42.0f, 96.0f);
 
 	// Lets it use AddMovementInput 
 	//AIControllerClass = AAIController::StaticClass();
 	AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
 
-	// Capsule component for collision
-	CollisionComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("CapsuleComponent"));
-	CollisionComponent->InitCapsuleSize(42.0f, 96.0f);
-	CollisionComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
-	CollisionComponent->SetCollisionObjectType(ECC_Pawn);
-	CollisionComponent->SetCollisionResponseToAllChannels(ECR_Block);
+	GetCharacterMovement()->MaxWalkSpeed = 600.0f;
 
-	RootComponent = CollisionComponent;
-	MovementComponent->UpdatedComponent = CollisionComponent;
+	GetCharacterMovement()->SetPlaneConstraintEnabled(true);
+	GetCharacterMovement()->SetPlaneConstraintAxisSetting(EPlaneConstraintAxisSetting::Y);
 
 	// Sprite component
 	SpriteComponent = CreateDefaultSubobject<UPaperSpriteComponent>(TEXT("SpriteComponent"));
-	SpriteComponent->SetupAttachment(CollisionComponent);
+	SpriteComponent->SetupAttachment(GetCapsuleComponent());
 
 	static ConstructorHelpers::FObjectFinder<UPaperSprite> SpriteAsset(TEXT("/Game/2DSideScroller/KnightAssets/KnightIdle_Sprite_1.KnightIdle_Sprite_1"));
 	if (SpriteAsset.Succeeded())
@@ -46,7 +40,7 @@ AWolf::AWolf()
 void AWolf::BeginPlay()
 {
 	Super::BeginPlay();
-	target = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+	Target = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 }
 
 // Called every frame
@@ -54,19 +48,19 @@ void AWolf::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (target != nullptr && !dead)
+	if (Target != nullptr && !dead)
 	{
 		// Distance from player
 		FVector distance;
-		distance.X = std::abs(target->GetActorLocation().X - GetActorLocation().X);
-		distance.Z = std::abs(target->GetActorLocation().Z - GetActorLocation().Z);
+		distance.X = std::abs(Target->GetActorLocation().X - GetActorLocation().X);
+		distance.Z = std::abs(Target->GetActorLocation().Z - GetActorLocation().Z);
 
 		int temp = 0;
 
 		while (distance.X <= 1300.0f && distance.Z <= 500.0f && temp < 1000)
 		{
 			// Gets direction to player and then moves towards it
-			FVector direction = (target->GetActorLocation() - GetActorLocation()).GetSafeNormal();
+			FVector direction = (Target->GetActorLocation() - GetActorLocation()).GetSafeNormal();
 			AddMovementInput(direction, 1.0f);
 			temp++;
 		}

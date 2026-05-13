@@ -2,16 +2,17 @@
 
 #pragma once
 
+#include "GameFramework/Actor.h"
 #include "CoreMinimal.h"
-#include "GameFramework/Pawn.h"
-#include "GameFramework/FloatingPawnMovement.h"
+#include "GameFramework/Character.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "PaperSpriteComponent.h"
 #include "PaperSprite.h"
 #include "Wolf.generated.h"
 
 UCLASS()
-class COOLNINJA_API AWolf : public APawn
+class COOLNINJA_API AWolf : public ACharacter
 {
 	GENERATED_BODY()
 
@@ -30,17 +31,11 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	UFloatingPawnMovement* MovementComponent;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
-	UCapsuleComponent* CollisionComponent;
-
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Visual")
 	UPaperSpriteComponent* SpriteComponent;
 
 	UPROPERTY(EditAnywhere)
-	AActor* target;
+	AActor* Target;
 
 	bool dead;
 };
