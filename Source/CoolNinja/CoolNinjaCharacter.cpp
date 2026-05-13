@@ -90,6 +90,7 @@ void ACoolNinjaCharacter::BeginPlay()
 	GetCharacterMovement()->BrakingFrictionFactor = 1.0f;
 	DashSpeed = 3000.0f;
 	DashTimer = 0.0f;
+	Health = 100.0f;
 }
 
 
@@ -187,6 +188,15 @@ void ACoolNinjaCharacter::Throw()
 	if (Projectile)
 	{
 		Projectile->Initialize(GetActorForwardVector());
+	}
+}
+
+void ACoolNinjaCharacter::Damage(float Damage)
+{
+	Health -= Damage;
+	if (Health <= 0)
+	{
+		// die
 	}
 }
 

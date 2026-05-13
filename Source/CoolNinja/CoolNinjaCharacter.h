@@ -86,6 +86,8 @@ protected:
 	void Attack();
 
 	void Throw();
+	
+	void Damage(float damage);
 
 	// runs when the player jumps
 	virtual void OnJumped_Implementation() override;
@@ -99,6 +101,7 @@ protected:
 
 	float DashSpeed;
 	float DashTimer;
+	float Health;
 
 	bool bDashing;
 
