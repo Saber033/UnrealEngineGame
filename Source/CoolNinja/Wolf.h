@@ -2,9 +2,10 @@
 
 #pragma once
 
+#include "GameFramework/Actor.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "GameFramework/FloatingPawnMovement.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "PaperSpriteComponent.h"
 #include "PaperSprite.h"
@@ -30,16 +31,11 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
-	UCapsuleComponent* CollisionComponent;
-
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Visual")
 	UPaperSpriteComponent* SpriteComponent;
 
 	UPROPERTY(EditAnywhere)
-	AActor* target;
+	AActor* Target;
 
 	bool dead;
 };
