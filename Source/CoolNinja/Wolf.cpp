@@ -70,14 +70,19 @@ void AWolf::Tick(float DeltaTime)
 
 		int temp = 0;
 
-		while (distance.X <= 1300.0f && distance.Z <= 500.0f && temp < 1000)
+		while (distance.X <= 1300.0f && temp < 1000)
 		{
 			// Gets direction to player and then moves towards it
 			FVector direction = (Target->GetActorLocation() - GetActorLocation()).GetSafeNormal();
 			AddMovementInput(direction, 1.0f);
 			temp++;
 
-			if (distance.X == 0.0f && distance.Z == 0.0f)
+			if (distance.Z <= 500.0f)
+			{
+				Jump();
+			}
+
+			if (GetCapsuleComponent()->IsOverlappingActor(Target))
 			{
 				// Attack player
 				Cast<ACoolNinjaCharacter>(Target)->Damage(1.0f);
