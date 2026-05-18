@@ -4,6 +4,7 @@
 #include "Wolf.h"
 #include "Kismet/GameplayStatics.h"
 #include "AIController.h"
+#include "CoolNinjaCharacter.h"
 
 // Sets default values
 AWolf::AWolf()
@@ -34,6 +35,7 @@ AWolf::AWolf()
 
 	//intializing other data members
 	dead = false;
+	health = 5;
 }
 
 // Called when the game starts or when spawned
@@ -47,6 +49,17 @@ void AWolf::BeginPlay()
 void AWolf::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	if (health <= 0)
+	{
+		dead = true;
+	}
+
+	if (dead)
+	{
+		SpriteComponent->SetVisibility(false);
+		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	}
 
 	if (Target != nullptr && !dead)
 	{
@@ -63,6 +76,12 @@ void AWolf::Tick(float DeltaTime)
 			FVector direction = (Target->GetActorLocation() - GetActorLocation()).GetSafeNormal();
 			AddMovementInput(direction, 1.0f);
 			temp++;
+
+			if (distance.X == 0.0f && distance.Z == 0.0f)
+			{
+				// Attack player
+				Cast<ACoolNinjaCharacter>(Target)->Damage(1.0f);
+			}
 		}
 	}
 }

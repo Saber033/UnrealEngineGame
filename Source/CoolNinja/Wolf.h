@@ -37,5 +37,7 @@ public:
 	UPROPERTY(EditAnywhere)
 	AActor* Target;
 
+private:
 	bool dead;
+	int health;
 };
