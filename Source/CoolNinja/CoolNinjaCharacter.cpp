@@ -184,9 +184,10 @@ void ACoolNinjaCharacter::Attack()
 void ACoolNinjaCharacter::Throw()
 {
 	GetSprite()->SetFlipbook(ThrowAnimation);
-	AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(Shuriken, GetActorLocation(), GetActorRotation());
-	if (Projectile)
+	if (Shuriken)
 	{
+		AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(Shuriken, GetActorLocation(), GetActorRotation());
+	
 		Projectile->Initialize(GetActorForwardVector());
 	}
 }

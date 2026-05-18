@@ -20,6 +20,9 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
+	UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* Mesh;
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 

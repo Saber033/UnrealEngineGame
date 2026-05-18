@@ -5,8 +5,8 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "PaperSpriteComponent.h"
-#include "PaperSprite.h"
-#include "Spider.generated.h"
+#include "WSpider.generated.h"
+
 
 UCLASS()
 class COOLNINJA_API ASpider : public ACharacter

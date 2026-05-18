@@ -34,6 +34,7 @@ class ACoolNinjaCharacter : public APaperCharacter
 
 	UTextRenderComponent* TextComponent;
 	virtual void Tick(float DeltaSeconds) override;
+
 protected:
 	// The animation to play while running around
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
@@ -63,7 +64,7 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
 	class UPaperFlipbook* ThrowAnimation;
 
-	UPROPERTY()
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<AProjectile> Shuriken;
 
 	/** Called to choose the correct animation to play based on the character's movement state */
@@ -87,7 +88,7 @@ protected:
 
 	void Throw();
 	
-	void Damage(float damage);
+	
 
 	// runs when the player jumps
 	virtual void OnJumped_Implementation() override;
@@ -112,4 +113,5 @@ public:
 	FORCEINLINE class UCameraComponent* GetSideViewCameraComponent() const { return SideViewCameraComponent; }
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
+	void Damage(float damage);
 };
