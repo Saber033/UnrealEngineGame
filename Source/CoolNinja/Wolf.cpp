@@ -13,6 +13,7 @@ AWolf::AWolf()
 	PrimaryActorTick.bCanEverTick = true;
 	
 	GetCapsuleComponent()->InitCapsuleSize(42.0f, 96.0f);
+	GetCapsuleComponent()->SetGenerateOverlapEvents(true);
 
 	// Lets it use AddMovementInput 
 	//AIControllerClass = AAIController::StaticClass();
