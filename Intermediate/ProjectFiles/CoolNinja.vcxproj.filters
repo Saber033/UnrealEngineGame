@@ -37,18 +37,6 @@
     <Filter Include="Source\CoolNinja">
       <UniqueIdentifier>{2A73762C-0159-4183-AC12-5A00E01CB217}</UniqueIdentifier>
     </Filter>
-    <ClCompile Include="..\..\Source\CoolNinja\BouncePad.cpp">
-      <Filter>Source\CoolNinja</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\CoolNinja\BouncePad.h">
-      <Filter>Source\CoolNinja</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Source\CoolNinja\BouncePadBP.cpp">
-      <Filter>Source\CoolNinja</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\CoolNinja\BouncePadBP.h">
-      <Filter>Source\CoolNinja</Filter>
-    </ClInclude>
     <None Include="..\..\Source\CoolNinja\CoolNinja.Build.cs">
       <Filter>Source\CoolNinja</Filter>
     </None>
