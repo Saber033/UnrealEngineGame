@@ -4,7 +4,6 @@
 #include "Wolf.h"
 #include "Kismet/GameplayStatics.h"
 #include "AIController.h"
-#include "CoolNinjaCharacter.h"
 
 // Sets default values
 AWolf::AWolf()
@@ -37,19 +36,23 @@ AWolf::AWolf()
 	//intializing other data members
 	dead = false;
 	health = 5;
+	damage_cooldown = 1.0f;
+	damage_timer = 0.0f;
 }
 
 // Called when the game starts or when spawned
 void AWolf::BeginPlay()
 {
 	Super::BeginPlay();
-	Target = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+	Target = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
 }
 
 // Called every frame
 void AWolf::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	damage_timer -= DeltaTime;
 
 	if (health <= 0)
 	{
@@ -65,6 +68,8 @@ void AWolf::Tick(float DeltaTime)
 	if (Target != nullptr && !dead)
 	{
 		// Distance from player
+		float distance_to_player = FVector::Dist(Target->GetActorLocation(), GetActorLocation());
+
 		FVector distance;
 		distance.X = std::abs(Target->GetActorLocation().X - GetActorLocation().X);
 		distance.Z = std::abs(Target->GetActorLocation().Z - GetActorLocation().Z);
@@ -83,10 +88,14 @@ void AWolf::Tick(float DeltaTime)
 				Jump();
 			}
 
-			if (GetCapsuleComponent()->IsOverlappingActor(Target))
+			if (distance_to_player < 100.0f && damage_timer <= 0.0f)
 			{
-				// Attack player
-				Cast<ACoolNinjaCharacter>(Target)->Damage(1.0f);
+				if (Player)
+				{
+					UGameplayStatics::ApplyDamage(Player, 10.0f, GetController(), this, nullptr);
+				}
+				
+				damage_timer = damage_cooldown;
 			}
 		}
 	}

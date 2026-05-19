@@ -9,6 +9,7 @@
 #include "Components/CapsuleComponent.h"
 #include "PaperSpriteComponent.h"
 #include "PaperSprite.h"
+#include "CoolNinjaCharacter.h"
 #include "Wolf.generated.h"
 
 UCLASS()
@@ -35,9 +36,12 @@ public:
 	UPaperSpriteComponent* SpriteComponent;
 
 	UPROPERTY(EditAnywhere)
-	AActor* Target;
+	ACharacter* Target;
+	ACharacter* Player = Cast<ACharacter>(Target);
 
 private:
 	bool dead;
 	int health;
+	float damage_cooldown;
+	float damage_timer;
 };
