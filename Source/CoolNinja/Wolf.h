@@ -37,7 +37,6 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	ACharacter* Target;
-	ACharacter* Player = Cast<ACharacter>(Target);
 
 private:
 	bool dead;

@@ -74,14 +74,11 @@ void AWolf::Tick(float DeltaTime)
 		distance.X = std::abs(Target->GetActorLocation().X - GetActorLocation().X);
 		distance.Z = std::abs(Target->GetActorLocation().Z - GetActorLocation().Z);
 
-		int temp = 0;
-
-		while (distance.X <= 1300.0f && temp < 1000)
+		if (distance.X <= 1300.0f)
 		{
 			// Gets direction to player and then moves towards it
 			FVector direction = (Target->GetActorLocation() - GetActorLocation()).GetSafeNormal();
 			AddMovementInput(direction, 1.0f);
-			temp++;
 
 			if (distance.Z <= 500.0f && distance.Z >= 100.0f)
 			{
@@ -90,10 +87,7 @@ void AWolf::Tick(float DeltaTime)
 
 			if (distance_to_player < 100.0f && damage_timer <= 0.0f)
 			{
-				if (Player)
-				{
-					UGameplayStatics::ApplyDamage(Player, 10.0f, GetController(), this, nullptr);
-				}
+				UGameplayStatics::ApplyDamage(Target, 10.0f, GetController(), this, nullptr);
 				
 				damage_timer = damage_cooldown;
 			}

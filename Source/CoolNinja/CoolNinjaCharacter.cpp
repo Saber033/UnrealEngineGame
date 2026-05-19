@@ -195,6 +195,13 @@ void ACoolNinjaCharacter::Throw()
 	}
 }
 
+float ACoolNinjaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	Damage(DamageAmount);
+
+	return DamageAmount;
+}
+
 void ACoolNinjaCharacter::Damage(float Damage)
 {
 	Health -= Damage;
