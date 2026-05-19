@@ -6,8 +6,6 @@
 #include "AIController.h"
 #include "CoolNinjaCharacter.h"
 
-#include "Kismet/KismetSystemLibrary.h"
-UKismetSystemLibrary::QuitGame(GetWorld(), GetFirstPlayerController(), EQuitPreference::Quit, false);
 // Sets default values
 AWolf::AWolf()
 {
@@ -79,7 +77,7 @@ void AWolf::Tick(float DeltaTime)
 			AddMovementInput(direction, 1.0f);
 			temp++;
 
-			if (distance.Z <= 500.0f)
+			if (distance.Z <= 500.0f && distance.Z >= 100.0f)
 			{
 				Jump();
 			}
