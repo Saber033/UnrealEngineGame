@@ -6,6 +6,8 @@
 #include "AIController.h"
 #include "CoolNinjaCharacter.h"
 
+#include "Kismet/KismetSystemLibrary.h"
+UKismetSystemLibrary::QuitGame(GetWorld(), GetFirstPlayerController(), EQuitPreference::Quit, false);
 // Sets default values
 AWolf::AWolf()
 {
