@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\CoolNinja.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{153AA513-4A25-474D-925E-97705875E627}</UniqueIdentifier>
+      <UniqueIdentifier>{3FD2F171-DEEC-4BFB-A63D-CCE66B550EA4}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\CoolNinja.Target.cs">
       <Filter>Source</Filter>
@@ -17,7 +17,7 @@
     <None Include="..\..\shadertoolsconfig.json" />
     <None Include="..\..\Temp.txt" />
     <Filter Include="Config">
-      <UniqueIdentifier>{848755D7-BA1B-41A2-BF54-6A212CD7626C}</UniqueIdentifier>
+      <UniqueIdentifier>{2C6CEFD3-E5AD-41CD-AD9D-462172209FCE}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -35,8 +35,14 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\CoolNinja">
-      <UniqueIdentifier>{2A73762C-0159-4183-AC12-5A00E01CB217}</UniqueIdentifier>
+      <UniqueIdentifier>{9A330D7A-EA8A-43B5-BC01-EF7FED8583CE}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\CoolNinja\BouncePadReal.cpp">
+      <Filter>Source\CoolNinja</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\CoolNinja\BouncePadReal.h">
+      <Filter>Source\CoolNinja</Filter>
+    </ClInclude>
     <None Include="..\..\Source\CoolNinja\CoolNinja.Build.cs">
       <Filter>Source\CoolNinja</Filter>
     </None>
