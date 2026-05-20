@@ -27,10 +27,12 @@ AWolf::AWolf()
 	SpriteComponent = CreateDefaultSubobject<UPaperSpriteComponent>(TEXT("SpriteComponent"));
 	SpriteComponent->SetupAttachment(GetCapsuleComponent());
 
-	static ConstructorHelpers::FObjectFinder<UPaperSprite> SpriteAsset(TEXT("/Game/2DSideScrollerCPP/wolf_sprite_1.wolf_sprite_1"));
+	static ConstructorHelpers::FObjectFinder<UPaperSprite> SpriteAsset(TEXT("/Game/2DSideScrollerCPP/Sprites/wolf_sprite_1_Sprite.wolf_sprite_1_Sprite"));
 	if (SpriteAsset.Succeeded())
 	{
 		SpriteComponent->SetSprite(SpriteAsset.Object);
+		SpriteComponent->SetRelativeLocation(FVector(-50.0f, 0.0f, -90.0f));
+		SpriteComponent->SetUsingAbsoluteRotation(true);
 	}
 
 	//intializing other data members
@@ -94,7 +96,7 @@ void AWolf::Tick(float DeltaTime)
 			FVector direction = (Target->GetActorLocation() - GetActorLocation()).GetSafeNormal();
 			AddMovementInput(direction, 1.0f);
 
-			if (distance.Z <= 500.0f && distance.Z >= 100.0f)
+			if (distance.Z <= 500.0f && distance.Z >= 100.0f && direction.Z >= 0)
 			{
 				Jump();
 			}

@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "Components/SphereComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "PaperSpriteComponent.h"
+#include "PaperSprite.h"
 #include "Projectile.generated.h"
 
 UCLASS()
@@ -26,6 +28,8 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class UProjectileMovementComponent* ProjectileMovement;
+
+	UPaperSpriteComponent* SpriteComponent;
 
 public:	
 	UPROPERTY(VisibleAnywhere)
