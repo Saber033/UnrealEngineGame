@@ -27,7 +27,7 @@ AWolf::AWolf()
 	SpriteComponent = CreateDefaultSubobject<UPaperSpriteComponent>(TEXT("SpriteComponent"));
 	SpriteComponent->SetupAttachment(GetCapsuleComponent());
 
-	static ConstructorHelpers::FObjectFinder<UPaperSprite> SpriteAsset(TEXT("/Game/2DSideScroller/KnightAssets/KnightIdle_Sprite_1.KnightIdle_Sprite_1"));
+	static ConstructorHelpers::FObjectFinder<UPaperSprite> SpriteAsset(TEXT("/Game/2DSideScrollerCPP/wolf_sprite_1.wolf_sprite_1"));
 	if (SpriteAsset.Succeeded())
 	{
 		SpriteComponent->SetSprite(SpriteAsset.Object);
@@ -38,6 +38,8 @@ AWolf::AWolf()
 	health = 5;
 	damage_cooldown = 1.0f;
 	damage_timer = 0.0f;
+
+	GetCharacterMovement()->JumpZVelocity = 750.0f;
 }
 
 // Called when the game starts or when spawned
@@ -45,6 +47,18 @@ void AWolf::BeginPlay()
 {
 	Super::BeginPlay();
 	Target = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
+}
+
+float AWolf::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	health -= DamageAmount;
+
+	if (health <= 0)
+	{
+		dead = true;
+	}
+
+	return DamageAmount;
 }
 
 // Called every frame
@@ -74,7 +88,7 @@ void AWolf::Tick(float DeltaTime)
 		distance.X = std::abs(Target->GetActorLocation().X - GetActorLocation().X);
 		distance.Z = std::abs(Target->GetActorLocation().Z - GetActorLocation().Z);
 
-		if (distance.X <= 1300.0f)
+		if (distance.X <= 2400.0f)
 		{
 			// Gets direction to player and then moves towards it
 			FVector direction = (Target->GetActorLocation() - GetActorLocation()).GetSafeNormal();
@@ -94,11 +108,4 @@ void AWolf::Tick(float DeltaTime)
 		}
 	}
 }
-
-//// Called to bind functionality to input
-//void AWolf::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-//{
-//	Super::SetupPlayerInputComponent(PlayerInputComponent);
-//
-//}
 

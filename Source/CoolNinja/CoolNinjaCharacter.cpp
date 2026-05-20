@@ -189,9 +189,22 @@ void ACoolNinjaCharacter::Throw()
 	GetSprite()->SetFlipbook(ThrowAnimation);
 	if (Shuriken)
 	{
-		AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(Shuriken, GetActorLocation(), GetActorRotation());
-	
-		Projectile->Initialize(GetActorForwardVector());
+		FVector SpawnLocation = GetActorLocation();
+		bool bFacingRight = GetControlRotation().Yaw == 0.0f;
+		SpawnLocation.X += bFacingRight ? 50.0f : -50.0f;
+
+		FRotator SpawnRotation = FRotator::ZeroRotator;
+
+		AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(Shuriken, SpawnLocation, SpawnRotation);
+
+		if (Projectile)
+		{
+			Projectile->SetOwner(this);
+
+			FVector Direction = bFacingRight ? FVector(1.0f, 0.0f, 0.0f) : FVector(-1.0f, 0.0f, 0.0f);
+
+			Projectile->Initialize(Direction);
+		}
 	}
 }
 
