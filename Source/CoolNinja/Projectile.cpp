@@ -13,7 +13,8 @@ AProjectile::AProjectile()
     CollisionComponent = CreateDefaultSubobject<USphereComponent>(TEXT("CollisionComponent"));
     RootComponent = CollisionComponent;
 
-    CollisionComponent->InitSphereRadius(10.0f);
+    CollisionComponent->InitSphereRadius(1.0f);
+
 
     CollisionComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 
@@ -31,6 +32,7 @@ AProjectile::AProjectile()
 
     SpriteComponent = CreateDefaultSubobject<UPaperSpriteComponent>(TEXT("SpriteComponent"));
     SpriteComponent->SetupAttachment(CollisionComponent);
+    SpriteComponent->SetRelativeScale3D(FVector(0.3f));
 
     static ConstructorHelpers::FObjectFinder<UPaperSprite> SpriteAsset(TEXT("/Game/2DSideScrollerCPP/Sprites/shuriken_sprite_Sprite.shuriken_sprite_Sprite"));
     if (SpriteAsset.Succeeded())

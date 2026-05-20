@@ -9,11 +9,14 @@
 #include "Components/CapsuleComponent.h"
 #include "PaperSpriteComponent.h"
 #include "PaperSprite.h"
+#include "PaperCharacter.h"
+#include "PaperFlipbook.h"
+#include "PaperFlipbookComponent.h"
 #include "CoolNinjaCharacter.h"
 #include "Wolf.generated.h"
 
 UCLASS()
-class COOLNINJA_API AWolf : public ACharacter
+class COOLNINJA_API AWolf : public APaperCharacter
 {
 	GENERATED_BODY()
 

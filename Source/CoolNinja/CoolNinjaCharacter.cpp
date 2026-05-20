@@ -193,6 +193,7 @@ void ACoolNinjaCharacter::Throw()
 		FVector SpawnLocation = GetActorLocation();
 		bool bFacingRight = GetControlRotation().Yaw == 0.0f;
 		SpawnLocation.X += bFacingRight ? 100.0f : -100.0f;
+		SpawnLocation.Z += 100.0f;
 
 		FRotator SpawnRotation = FRotator::ZeroRotator;
 

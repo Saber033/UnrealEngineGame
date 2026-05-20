@@ -24,15 +24,16 @@ AWolf::AWolf()
 	GetCharacterMovement()->SetPlaneConstraintAxisSetting(EPlaneConstraintAxisSetting::Y);
 
 	// Sprite component
-	SpriteComponent = CreateDefaultSubobject<UPaperSpriteComponent>(TEXT("SpriteComponent"));
-	SpriteComponent->SetupAttachment(GetCapsuleComponent());
+	static ConstructorHelpers::FObjectFinder<UPaperFlipbook> WolfFlipbook(TEXT("/Game/2DSideScrollerCPP/Sprites/WolfFlipbook.WolfFlipbook"));
 
-	static ConstructorHelpers::FObjectFinder<UPaperSprite> SpriteAsset(TEXT("/Game/2DSideScrollerCPP/Sprites/wolf_sprite_1_Sprite.wolf_sprite_1_Sprite"));
-	if (SpriteAsset.Succeeded())
+	if (WolfFlipbook.Succeeded())
 	{
-		SpriteComponent->SetSprite(SpriteAsset.Object);
-		SpriteComponent->SetRelativeLocation(FVector(-50.0f, 0.0f, -90.0f));
-		SpriteComponent->SetUsingAbsoluteRotation(true);
+		GetSprite()->SetFlipbook(WolfFlipbook.Object);
+
+		GetSprite()->SetRelativeLocation(FVector(0.0f, 0.0f, -104.0f));
+
+		GetSprite()->SetUsingAbsoluteRotation(false);
+		GetSprite()->SetRelativeRotation(FRotator::ZeroRotator);
 	}
 
 	//intializing other data members
@@ -48,6 +49,9 @@ AWolf::AWolf()
 void AWolf::BeginPlay()
 {
 	Super::BeginPlay();
+
+	GetSprite()->SetRelativeScale3D(FVector(2.0f));
+
 	Target = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
 }
 
@@ -77,7 +81,8 @@ void AWolf::Tick(float DeltaTime)
 
 	if (dead)
 	{
-		SpriteComponent->SetVisibility(false);
+		GetSprite()->SetVisibility(false);
+		GetSprite()->SetHiddenInGame(true);
 		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	}
 
