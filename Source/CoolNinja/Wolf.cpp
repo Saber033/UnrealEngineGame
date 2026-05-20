@@ -13,7 +13,6 @@ AWolf::AWolf()
 	
 	GetCapsuleComponent()->InitCapsuleSize(42.0f, 96.0f);
 	GetCapsuleComponent()->SetGenerateOverlapEvents(true);
-	GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_WorldDynamic, ECR_Block);
 
 	// Lets it use AddMovementInput 
 	//AIControllerClass = AAIController::StaticClass();
@@ -28,7 +27,7 @@ AWolf::AWolf()
 	SpriteComponent = CreateDefaultSubobject<UPaperSpriteComponent>(TEXT("SpriteComponent"));
 	SpriteComponent->SetupAttachment(GetCapsuleComponent());
 
-	static ConstructorHelpers::FObjectFinder<UPaperSprite> SpriteAsset(TEXT("/Game/2DSideScroller/KnightAssets/KnightIdle_Sprite_1.KnightIdle_Sprite_1"));
+	static ConstructorHelpers::FObjectFinder<UPaperSprite> SpriteAsset(TEXT("/Game/2DSideScrollerCPP/wolf_sprite_1.wolf_sprite_1"));
 	if (SpriteAsset.Succeeded())
 	{
 		SpriteComponent->SetSprite(SpriteAsset.Object);
