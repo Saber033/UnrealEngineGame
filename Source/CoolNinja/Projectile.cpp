@@ -29,6 +29,17 @@ AProjectile::AProjectile()
 
     ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovement"));
 
+    SpriteComponent = CreateDefaultSubobject<UPaperSpriteComponent>(TEXT("SpriteComponent"));
+    SpriteComponent->SetupAttachment(CollisionComponent);
+
+    static ConstructorHelpers::FObjectFinder<UPaperSprite> SpriteAsset(TEXT("/Game/2DSideScrollerCPP/Sprites/shuriken_sprite_Sprite.shuriken_sprite_Sprite"));
+    if (SpriteAsset.Succeeded())
+    {
+        SpriteComponent->SetSprite(SpriteAsset.Object);
+		SpriteComponent->SetRelativeLocation(FVector(-50.0f, 0.0f, -90.0f));
+		SpriteComponent->SetUsingAbsoluteRotation(true);
+    }
+
     ProjectileMovement->InitialSpeed = 2000.0f;
     ProjectileMovement->MaxSpeed = 2000.0f;
     ProjectileMovement->ProjectileGravityScale = 0.0f;

@@ -77,6 +77,7 @@ ACoolNinjaCharacter::ACoolNinjaCharacter()
 	// Enable replication on the Sprite component so animations show up when networked
 	GetSprite()->SetIsReplicated(true);
 	bReplicates = true;
+	Shuriken = AProjectile::StaticClass();
 }
 
 void ACoolNinjaCharacter::BeginPlay()
@@ -191,7 +192,7 @@ void ACoolNinjaCharacter::Throw()
 	{
 		FVector SpawnLocation = GetActorLocation();
 		bool bFacingRight = GetControlRotation().Yaw == 0.0f;
-		SpawnLocation.X += bFacingRight ? 50.0f : -50.0f;
+		SpawnLocation.X += bFacingRight ? 100.0f : -100.0f;
 
 		FRotator SpawnRotation = FRotator::ZeroRotator;
 
